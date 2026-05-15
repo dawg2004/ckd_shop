@@ -1,0 +1,3 @@
+import Link from 'next/link';
+export function Header(){return <header className='border-b'><div className='container-x py-4 flex items-center justify-between'><Link href='/' className='font-semibold'>CKD GIFT</Link><nav className='hidden md:flex gap-5 text-sm'><Link href='/products'>Shop</Link><Link href='/gift'>Gift</Link><Link href='/products?new=1'>New</Link><Link href='/products?best=1'>Best Sellers</Link><Link href='/about'>About</Link></nav><Link href='/cart'>Cart</Link></div></header>}
+export function Footer(){return <footer className='border-t mt-16'><div className='container-x py-8 text-sm text-zinc-500'>© CKD SHOP</div></footer>}

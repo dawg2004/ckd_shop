@@ -1,0 +1,2 @@
+'use client';import { useStore } from '@/components/store';import ProductCard from '@/components/product-card';
+export default function CD({params}:{params:{slug:string}}){const {categories,products}=useStore();const c=categories.find((x:any)=>x.slug===params.slug);if(!c) return null;const list=products.filter((p:any)=>p.category_ids.includes(c.id));return <main className='container-x py-8'><h1 className='text-2xl mb-4'>{c.name}</h1><div className='grid grid-cols-2 md:grid-cols-4 gap-3'>{list.map((p:any)=><ProductCard key={p.id} p={p}/>)}</div></main>}
