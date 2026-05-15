@@ -1,3 +1,33 @@
-'use client';import { useStore } from '@/components/store';import { notFound } from 'next/navigation';
-export default function P({params}:{params:{slug:string}}){const {products}=useStore();const p=products.find((x:any)=>x.slug===params.slug);if(!p) return notFound();
-return <main className='container-x py-8 grid md:grid-cols-2 gap-8'><img src={p.images[0]} className='w-full'/><div className='space-y-3'><h1 className='text-2xl'>{p.name}</h1><p>¥{p.price.toLocaleString()}</p><p>{p.short_description}</p><ul className='text-sm space-y-1'><li>ラッピング: {p.gift_wrapping_available?'対応可':'非対応'}</li><li>メッセージカード: {p.message_card_available?'対応可':'非対応'}</li><li>ギフトおすすめ: {p.is_gift_recommended?'はい':'-'}</li><li>素材: {p.material}</li><li>サイズ: {p.size}</li></ul><button className='btn w-full md:w-auto'>カートに入れる</button></div></main>}
+'use client';
+
+import { use } from 'react';
+
+import { useStore } from '@/components/store';
+import { notFound } from 'next/navigation';
+
+export default function P({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
+  const { products } = useStore();
+  const p = products.find((x: any) => x.slug === slug);
+
+  if (!p) return notFound();
+
+  return (
+    <main className="container-x py-8 grid md:grid-cols-2 gap-8">
+      <img src={p.images[0]} className="w-full" />
+      <div className="space-y-3">
+        <h1 className="text-2xl">{p.name}</h1>
+        <p>¥{p.price.toLocaleString()}</p>
+        <p>{p.short_description}</p>
+        <ul className="text-sm space-y-1">
+          <li>ラッピング: {p.gift_wrapping_available ? '対応可' : '非対応'}</li>
+          <li>メッセージカード: {p.message_card_available ? '対応可' : '非対応'}</li>
+          <li>ギフトおすすめ: {p.is_gift_recommended ? 'はい' : '-'}</li>
+          <li>素材: {p.material}</li>
+          <li>サイズ: {p.size}</li>
+        </ul>
+        <button className="btn w-full md:w-auto">カートに入れる</button>
+      </div>
+    </main>
+  );
+}
