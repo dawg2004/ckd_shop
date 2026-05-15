@@ -1,0 +1,1 @@
+export default function AS(){return <main className='container-x py-8 max-w-3xl space-y-2'>{['ショップ名','トップメインコピー','トップサブコピー','ヒーロー画像','送料','送料無料ライン','ラッピング料金','メッセージカード料金','お問い合わせメール','SNSリンク'].map(x=><input key={x} className='card w-full' placeholder={x}/>)}</main>}
